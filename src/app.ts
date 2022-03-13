@@ -17,7 +17,7 @@ const messageSigner = new MessageSigner(
 bot.on("text", ctx => {
     console.log("from.id =>", ctx.message.from.id);
     if(ctx.message.from.id != ADMIN_ID) {
-        return ctx.reply("Access denied");
+        return ctx.reply(`Access denied, your ID: ${ctx.message.from.id}`);
     }
     messageSigner.signatureStorage.entities = ctx.message.entities || [];
     messageSigner.signatureStorage.text = ctx.message.text;

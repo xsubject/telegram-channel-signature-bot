@@ -37,6 +37,7 @@ bot.on("channel_post", ctx => {
     const entities = external.entities ?  external.entities : [];
     const captionEntities = external.caption_entities ? external.caption_entities : [];
     const signedMessage = messageSigner.sign(msg, [...entities, ...captionEntities]);
+    if(!external.text && !external.caption) return;
     const editMessageMethod = external.text ? "editMessageText" : "editMessageCaption";
     
     bot.telegram[editMessageMethod](

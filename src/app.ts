@@ -57,7 +57,9 @@ bot.on("channel_post", ctx => {
 bot.on("chat_join_request", ctx => {
     if(!ctx.chatJoinRequest) return;
     if(CHAT_ID !== ctx.chatJoinRequest.chat.id) return console.log(`SKIP CHAT ${ctx.chatJoinRequest.chat.id}`);
-    
+
+    const from = ctx.chatJoinRequest.from;
+    console.log(`Auto approve chat join: ${from.first_name} ${from.username ? `-> @${from.username}` : ""}`)
     ctx.telegram.approveChatJoinRequest(ctx.chatJoinRequest.chat.id, ctx.chatJoinRequest.from.id);
 });
 

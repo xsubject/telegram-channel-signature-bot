@@ -52,7 +52,14 @@ bot.on("channel_post", ctx => {
         }
     );
 
-})
+});
+
+bot.on("chat_join_request", ctx => {
+    if(!ctx.chatJoinRequest) return;
+    if(CHAT_ID !== ctx.chatJoinRequest.chat.id) return console.log(`SKIP CHAT ${ctx.chatJoinRequest.chat.id}`);
+    
+    ctx.telegram.approveChatJoinRequest(ctx.chatJoinRequest.chat.id, ctx.chatJoinRequest.from.id);
+});
 
 process.once('SIGINT', () => bot.stop('SIGINT'));
 process.once('SIGTERM', () => bot.stop('SIGTERM'));

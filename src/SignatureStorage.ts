@@ -13,14 +13,14 @@ class SignatureStorage implements SignatureStorageData {
     constructor(
         private _path: string
     ) {
-        const json = fs.readFileSync("signature.json").toString();
+        const json = fs.readFileSync(_path).toString();
         const data = JSON.parse(json) as SignatureStorageData;
         this.text = data.text;
-        this.entities = data.entities;
+        this.entities = data.entities || [];
     }
 
     public write() {
-        fs.writeFileSync("signature.json", JSON.stringify({
+        fs.writeFileSync(this._path, JSON.stringify({
             text: this.text || "",
             entities: this.entities || []
         }));

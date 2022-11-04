@@ -10,12 +10,15 @@ class MessageSigner {
         let newText = "" + text + "\n\n";
         const nativeTextLen = newText.length;
         newText = `${newText}${this.signatureStorage.text}`;
-    
-        const newEntities = this.signatureStorage.entities.map(entity => {
-            const newEntity = Object.assign({}, entity);
-            newEntity.offset = newEntity.offset + nativeTextLen;
-            return newEntity;
-        });
+        
+
+        const newEntities = this.signatureStorage.entities !== undefined ? 
+            this.signatureStorage.entities.map(entity => {
+                const newEntity = Object.assign({}, entity);
+                newEntity.offset = newEntity.offset + nativeTextLen;
+                return newEntity;
+            }) : 
+            [];
     
         return {
             text: newText,

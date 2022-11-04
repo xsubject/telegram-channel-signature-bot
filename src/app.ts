@@ -11,7 +11,7 @@ const bot: Telegraf<Context<Update>> = new Telegraf(process.env.BOT_TOKEN as str
 const CHAT_ID = parseInt(process.env.CHAT_ID as string);
 const ADMIN_ID = parseInt(process.env.ADMIN_ID as string);
 const messageSigner = new MessageSigner(
-    new SignatureStorage("./signature.json")
+    new SignatureStorage("./data/signature.json")
 );
 
 bot.on("text", ctx => {

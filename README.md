@@ -39,3 +39,5 @@ Access denied, your ID: 99999999 # <- ADMIN_ID Here
 * Send the bot a message with the content in the form of the desired caption to the posts
 
 Now your bot will add your signature to all posts in the channel
+
+More info look at [GET_STARTED.md](https://github.com/xsubject/telegram-channel-signature-bot/blob/master/GET_STARTED.md)
